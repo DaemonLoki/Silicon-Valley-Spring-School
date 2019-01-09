@@ -34,7 +34,7 @@ class TalkDescription extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20.0),
       child: Text(
         _description,
-        style: TextStyle(fontStyle: FontStyle.italic),
+        style: TextStyle(fontWeight: FontWeight.w400),
       ),
     );
   }
@@ -48,8 +48,8 @@ class TalkLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
-      child: Text(_location, style: TextStyle(fontWeight: FontWeight.w100)),
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Text(_location, style: TextStyle(fontStyle: FontStyle.italic)),
     );
   }
 }

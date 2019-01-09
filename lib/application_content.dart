@@ -39,7 +39,7 @@ class ApplicationContent extends StatelessWidget {
 
   final playerWidget = new Chewie(
     new VideoPlayerController.asset("videos/intro.mp4"),
-    autoPlay: true,
+    autoPlay: false,
   );
 }
 
