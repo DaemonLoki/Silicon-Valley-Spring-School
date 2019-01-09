@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'ui/section_header.dart';
 import 'ui/talk_widget.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'ui/scholarship_item.dart';
+import 'ui/online_course_item.dart';
 
 class ExtraContent extends StatelessWidget {
   const ExtraContent();
@@ -67,88 +68,6 @@ class ExtraContent extends StatelessWidget {
           "Udacity.com",
           "https://eu.udacity.com/course/deep-learning--ud730")
       ],
-    );
-  }
-}
-
-class SholarshipItem extends StatelessWidget {
-  SholarshipItem(this._title, this._donor, this._content);
-
-  final String _title;
-  final String _donor;
-  final String _content;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(_title,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0)),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Text("Provided by: " + _donor,
-                style: TextStyle(fontStyle: FontStyle.italic)),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20.0),
-            child:
-                Text(_content, style: TextStyle(fontWeight: FontWeight.w400)),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class OnlineCourseItem extends StatelessWidget {
-  OnlineCourseItem(this._title, this._website, this._url);
-
-  final String _title;
-  final String _website;
-  final String _url;
-
-  void _tryToLaunchUrl(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw "Could not launch $url";
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => _tryToLaunchUrl(_url),
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: new Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              _title,
-              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16.0),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.web),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(
-                      _website,
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
     );
   }
 }
