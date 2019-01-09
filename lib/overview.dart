@@ -6,18 +6,18 @@ import 'personal_content.dart';
 import 'application_content.dart';
 
 class OverviewNav extends StatefulWidget {
+  const OverviewNav({Key key}) : super(key: key);
+
   @override
-  _OverviewNavState createState() => new _OverviewNavState();
+  OverviewNavState createState() => new OverviewNavState();
 }
 
 class TabContent {
-
   const TabContent({this.title, this.content});
 
   final String title;
   final Widget content;
 }
-
 
 List<TabContent> tabs = <TabContent>[
   new TabContent(title: "Application", content: ApplicationContent()),
@@ -27,7 +27,22 @@ List<TabContent> tabs = <TabContent>[
   const TabContent(title: "Extracurricular", content: const ExtraContent()),
 ];
 
-class _OverviewNavState extends State<OverviewNav> {
+class OverviewNavState extends State<OverviewNav>
+    with SingleTickerProviderStateMixin {
+  TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = new TabController(vsync: this, length: tabs.length);
+  }
+
+  @override
+  void dispose() {
+    tabController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -36,6 +51,7 @@ class _OverviewNavState extends State<OverviewNav> {
           appBar: AppBar(
             title: Text('Stefan'),
             bottom: TabBar(
+              controller: tabController,
               isScrollable: true,
               tabs: tabs.map((TabContent tab) {
                 return Tab(text: tab.title);
@@ -43,6 +59,7 @@ class _OverviewNavState extends State<OverviewNav> {
             ),
           ),
           body: TabBarView(
+            controller: tabController,
             children: tabs.map((TabContent tab) {
               return tab.content;
             }).toList(),

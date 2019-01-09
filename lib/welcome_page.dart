@@ -3,6 +3,8 @@ import 'overview.dart';
 
 class WelcomePage extends StatelessWidget {
 
+  static final myOverviewNavKey = new GlobalKey<OverviewNavState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +38,9 @@ class WelcomePage extends StatelessWidget {
                 color: Theme.of(context).accentColor,
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => OverviewNav()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => OverviewNav(
+                    key: myOverviewNavKey
+                  )));
                 }
               ),
             )
