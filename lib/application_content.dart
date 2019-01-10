@@ -8,7 +8,7 @@ import 'welcome_page.dart';
 class ApplicationContent extends StatelessWidget {
 
   final _playerWidget = new Chewie(
-    new VideoPlayerController.asset("videos/overview.mov"),
+    new VideoPlayerController.asset("videos/overview.m4v"),
     autoPlay: false,
     aspectRatio: 1.8,
   );
@@ -45,7 +45,12 @@ class ApplicationContent extends StatelessWidget {
                 child: SocialMediaLink("images/linkedin.png", "Stefan Blos", "https://www.linkedin.com/in/stefan-blos/"),
               ),
               SocialMediaLink("images/xing.png", "Stefan Blos", "https://www.xing.com/profile/Stefan_Blos/"),
-              SocialMediaLink("images/twitter.png", "@stefanjblos", "https://twitter.com/stefanjblos")
+              SocialMediaLink("images/twitter.png", "@stefanjblos", "https://twitter.com/stefanjblos"),
+              SectionHeader("Source Code"),
+              Text("I wrote this app using a beatiful little framework called Flutter. Therefore the code that is available could be used for both Android and iOS.\n\nI decided to make it available as OpenSource so that you can see the effort that went into the creation of the app. Just click below to take a look at the code."),
+              SocialMediaLink("images/github.png", "Stefan to Silicon Valley", "https://github.com/DaemonLoki/Silicon-Valley-Spring-School"),
+              Text("Finally, if you want to know what Flutter is and why I think it is cool, I wrote a blog post about this a little while ago. Please click the Medium link below to read this."),
+              SocialMediaLink("images/medium.png", "Flutter - make cross-plattform development great again", "https://medium.com/@stefanblos/flutter-make-cross-platform-development-great-again-37084c14c2e")
             ],
           ),
         ),
@@ -85,9 +90,15 @@ class SocialMediaLink extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Image.asset(_imageName, height: 60.0,width: 60.0,),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 40.0),
-              child: Text(_name, style: TextStyle(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, fontSize: 18.0)),
+            Flexible(
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text(_name, style: TextStyle(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, fontSize: 18.0)),
+                  ),
+                ],
+              ),
             )
           ],
         ),

@@ -23,15 +23,14 @@ class PersonalContent extends StatelessWidget {
               Text(
                 "I'm lucky enough to be able to say that I already have a little family. In June 2017 my little daughter 'Nora' was born. Currently I'm living together with my girlfried and Nora in Ebermannstadt. It's a great joy to have our little darling in our lives and we are enjoying every day of it. \n\nOf course handling everything between university, family and work is not always easy and provides quite some challenges. While this makes my student life different to most others it is always great to have the family back home. Here you can see my beautiful little family:"
               ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Image.asset("images/carina.jpg", height: 200.0,),
-                    Image.asset("images/nora.jpg", height: 200.0)
-                ],),
-              )
+              Center(child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: Image.asset("images/nora.jpg", height: 300.0),
+              )),
+              Center(child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                child: Image.asset("images/carina.jpg", height: 300.0),
+              )),
           ],),
         )
       ],

@@ -8,7 +8,7 @@ class WelcomePage extends StatelessWidget {
   static final myOverviewNavKey = new GlobalKey<OverviewNavState>();
 
   final _playerWidget = new Chewie(
-    new VideoPlayerController.asset("videos/intro.mov"),
+    new VideoPlayerController.asset("videos/intro.m4v"),
     autoPlay: false,
     aspectRatio: 1.8,
   );
