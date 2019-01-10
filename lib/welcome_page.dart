@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'overview.dart';
+import 'package:chewie/chewie.dart';
+import 'package:video_player/video_player.dart';
 
 class WelcomePage extends StatelessWidget {
 
   static final myOverviewNavKey = new GlobalKey<OverviewNavState>();
+
+  final _playerWidget = new Chewie(
+    new VideoPlayerController.asset("videos/intro.mov"),
+    autoPlay: false,
+    aspectRatio: 1.8,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +19,7 @@ class WelcomePage extends StatelessWidget {
       body: new Container(
         color: Theme.of(context).primaryColor,
         child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 180.0, horizontal: 20.0),
+          padding: EdgeInsets.symmetric(vertical: 120.0, horizontal: 20.0),
           children: <Widget>[
             Text(
               'Welcome',
@@ -19,22 +27,13 @@ class WelcomePage extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 80.0, horizontal: 20.0),
-              child: Text(
-                'This project was created to show you why Stefan is perfectly suited to paticipate in the trip to Silicon Valley',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w400,
-                  height: 1.5,
-                  color: Colors.white),
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 60.0),
+              child: _playerWidget,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 60.0),
               child: RaisedButton(
-                child: Text('LET\'S SEE'),
+                child: Text('LET\'S HAVE FUN WITH IT'),
                 color: Theme.of(context).accentColor,
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 20.0),
                 onPressed: () {

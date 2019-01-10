@@ -22,7 +22,7 @@ class TabContent {
 List<TabContent> tabs = <TabContent>[
   new TabContent(title: "Application", content: ApplicationContent()),
   new TabContent(title: "Personal", content: PersonalContent()),
-  const TabContent(title: "Academia", content: const AcademiaContent()),
+  new TabContent(title: "Academia", content: AcademiaContent()),
   const TabContent(title: "Work", content: const WorkContent()),
   const TabContent(title: "Extracurricular", content: const ExtraContent()),
 ];

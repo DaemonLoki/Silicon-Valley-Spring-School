@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
 import 'package:video_player/video_player.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'ui/section_header.dart';
 import 'welcome_page.dart';
 
 class ApplicationContent extends StatelessWidget {
+
+  final _playerWidget = new Chewie(
+    new VideoPlayerController.asset("videos/overview.mov"),
+    autoPlay: false,
+    aspectRatio: 1.8,
+  );
+
   @override
   Widget build(BuildContext context) {
     return new ListView(
       children: <Widget>[
-        playerWidget,
+        _playerWidget,
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -29,7 +37,15 @@ class ApplicationContent extends StatelessWidget {
               ContentShort("Personal Infos", "Infos about me as a person. Also how I'm living with my family and how enjoyable this is. ","Go To Personal", 1),
               ContentShort("Academia", "My academic records including what I focus on during studies as well as some highlights.", "Go To Academia", 2),
               ContentShort("Work Experience", "What experience I have gained so far in the industry in different positions.", "Go To Work Experience", 3),
-              ContentShort("Extracurricular", "I've done a lot aside from university and work which resembles my enthusiasm and interest in all technological things.", "Go To Extracurricular", 4)
+              ContentShort("Extracurricular", "I've done a lot aside from university and work which resembles my enthusiasm and interest in all technological things.", "Go To Extracurricular", 4),
+              SectionHeader("Social Media"),
+              Text("You can also see me on different social media plattforms. Just click on what you want to see."),
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0),
+                child: SocialMediaLink("images/linkedin.png", "Stefan Blos", "https://www.linkedin.com/in/stefan-blos/"),
+              ),
+              SocialMediaLink("images/xing.png", "Stefan Blos", "https://www.xing.com/profile/Stefan_Blos/"),
+              SocialMediaLink("images/twitter.png", "@stefanjblos", "https://twitter.com/stefanjblos")
             ],
           ),
         ),
@@ -37,10 +53,47 @@ class ApplicationContent extends StatelessWidget {
     );
   }
 
-  final playerWidget = new Chewie(
-    new VideoPlayerController.asset("videos/intro.mp4"),
-    autoPlay: false,
-  );
+  
+}
+
+class SocialMediaLink extends StatelessWidget {
+
+  SocialMediaLink(this._imageName, this._name, this._url);
+
+  final String _imageName;
+  final String _name;
+  final String _url;
+
+  void _launchUrl(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw "Could not launch $url";
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new InkWell(
+      onTap: () => _launchUrl(_url),
+      child: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(_imageName, height: 60.0,width: 60.0,),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 40.0),
+              child: Text(_name, style: TextStyle(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, fontSize: 18.0)),
+            )
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class ContentShort extends StatelessWidget {

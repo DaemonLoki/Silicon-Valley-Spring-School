@@ -48,7 +48,13 @@ flutter:
     - images/nora.jpg
     - images/carina.jpg
     - images/im_the_boss.png
-    - videos/intro.mp4
+    - images/blindar_logo.png
+    - images/tracker.png
+    - images/twitter.png
+    - images/xing.png
+    - images/linkedin.png
+    - videos/intro.mov
+    - videos/overview.mov
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

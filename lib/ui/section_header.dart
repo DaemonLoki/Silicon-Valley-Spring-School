@@ -10,7 +10,10 @@ class SectionHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Text(_title, style: TextStyle(color: Colors.grey[700], fontSize: 18.0, fontStyle: FontStyle.italic)),
+        Padding(
+          padding: const EdgeInsets.only(top: 8.0),
+          child: Text(_title, style: TextStyle(color: Colors.grey[700], fontSize: 20.0, fontStyle: FontStyle.italic)),
+        ),
         Divider()
       ],
     );
